@@ -22,30 +22,6 @@ CREATE TABLE flight_logs (
     , remarks TEXT NULL
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
-
-    , CONSTRAINT flight_logs_user_id_fkey FOREIGN KEY (user_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT flight_logs_scheduler_id_fkey FOREIGN KEY (scheduler_signature_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT flight_logs_sarm_id_fkey FOREIGN KEY (sarm_signature_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT flight_logs_instructor_id_fkey FOREIGN KEY (instructor_signature_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT flight_logs_student_id_fkey FOREIGN KEY (student_signature_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT flight_logs_training_officer_id_fkey FOREIGN KEY (training_officer_signature_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 DROP TRIGGER IF EXISTS bi_flight_logs;

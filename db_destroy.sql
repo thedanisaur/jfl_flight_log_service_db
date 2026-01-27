@@ -12,12 +12,9 @@ DROP TABLE IF EXISTS missions;
 DROP TABLE IF EXISTS flight_logs;
 
 /* Drop user related dbos */
-DROP VIEW IF EXISTS users_vw;
+DROP TRIGGER IF EXISTS bi_permissions;
 
-DROP TRIGGER IF EXISTS bi_users;
-
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS permissions;
 
 /* Drop schema */
-DROP SCHEMA jfl;
+DROP SCHEMA jfl_flight_log_service;

@@ -26,10 +26,6 @@ CREATE TABLE aircrews (
     , CONSTRAINT aircrews_flight_log_id_fkey FOREIGN KEY (flight_log_id)
         REFERENCES flight_logs (id) MATCH SIMPLE
         ON UPDATE NO ACTION ON DELETE NO ACTION
-
-    , CONSTRAINT aircrews_user_id_fkey FOREIGN KEY (user_id)
-        REFERENCES users (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 DROP TRIGGER IF EXISTS bi_aircrews;
