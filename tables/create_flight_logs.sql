@@ -1,7 +1,6 @@
 CREATE TABLE flight_logs (
       id BINARY(16) PRIMARY KEY
     , user_id BINARY(16) NOT NULL
-    , unit_id BINARY(16) NOT NULL
     , mds VARCHAR(255) NOT NULL
     , flight_log_date DATETIME NOT NULL
     , serial_number VARCHAR(255) NOT NULL

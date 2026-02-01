@@ -2,7 +2,7 @@ CREATE TABLE flight_log_comments (
       id BINARY(16) PRIMARY KEY
     , flight_log_id BINARY(16) NOT NULL
     , user_id BINARY(16) NOT NULL
-    , role_id BINARY(16) NOT NULL
+    , role_name VARCHAR(255) NOT NULL
     , comment TEXT NULL
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
