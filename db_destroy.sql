@@ -1,6 +1,4 @@
 /* Drop flight log related dbos */
-DROP VIEW IF EXISTS flight_logs_vw;
-
 DROP TRIGGER IF EXISTS bi_flight_log_comments;
 DROP TRIGGER IF EXISTS bi_aircrews;
 DROP TRIGGER IF EXISTS bi_missions;
