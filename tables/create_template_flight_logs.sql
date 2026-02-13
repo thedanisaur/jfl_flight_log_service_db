@@ -1,5 +1,6 @@
 CREATE TABLE template_flight_logs (
       id BINARY(16) PRIMARY KEY
+    , name VARCHAR(255) NOT NULL
     , user_id BINARY(16) NOT NULL
     , mds VARCHAR(255) NOT NULL
     , flight_log_date DATETIME NOT NULL
@@ -21,6 +22,8 @@ CREATE TABLE template_flight_logs (
     , remarks TEXT NULL
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
+
+    , UNIQUE (name, user_id)
 );
 
 DROP TRIGGER IF EXISTS bi_template_flight_logs;
