@@ -1,4 +1,4 @@
-CREATE TABLE aircrews (
+CREATE TABLE template_aircrews (
       id BINARY(16) PRIMARY KEY
     , flight_log_id BINARY(16) NOT NULL
     , user_id BINARY(16) NOT NULL
@@ -23,14 +23,14 @@ CREATE TABLE aircrews (
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
 
-    , CONSTRAINT aircrews_flight_log_id_fkey FOREIGN KEY (flight_log_id)
-        REFERENCES flight_logs (id) MATCH SIMPLE
+    , CONSTRAINT template_aircrews_flight_log_id_fkey FOREIGN KEY (flight_log_id)
+        REFERENCES template_flight_logs (id) MATCH SIMPLE
         ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-DROP TRIGGER IF EXISTS bi_aircrews;
+DROP TRIGGER IF EXISTS bi_template_aircrews;
 DELIMITER $$
-CREATE TRIGGER bi_aircrews BEFORE INSERT ON aircrews FOR EACH ROW
+CREATE TRIGGER bi_template_aircrews BEFORE INSERT ON template_aircrews FOR EACH ROW
 BEGIN
     IF (NEW.id IS NULL) THEN
         SET NEW.id = UUID_TO_BIN(UUID());

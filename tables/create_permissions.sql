@@ -1,20 +1,20 @@
-CREATE TABLE flight_log_comments (
+CREATE TABLE permissions (
       id BINARY(16) PRIMARY KEY
-    , flight_log_id BINARY(16) NOT NULL
-    , user_id BINARY(16) NOT NULL
     , role_name VARCHAR(255) NOT NULL
-    , comment TEXT NULL
+    , resource VARCHAR(255) NOT NULL
+    , operation ENUM('create', 'read', 'update', 'delete') NOT NULL
+    , effect ENUM('allow', 'deny') NOT NULL
+    , cond_type VARCHAR(255) NOT NULL
+    , cond_expr TEXT NULL
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
 
-    , CONSTRAINT flight_log_comments_flight_log_id_fkey FOREIGN KEY (flight_log_id)
-        REFERENCES flight_logs (id) MATCH SIMPLE
-        ON UPDATE NO ACTION ON DELETE NO ACTION
+    , UNIQUE (role_name, resource, operation)
 );
 
-DROP TRIGGER IF EXISTS bi_flight_log_comments;
+DROP TRIGGER IF EXISTS bi_permissions;
 DELIMITER $$
-CREATE TRIGGER bi_flight_log_comments BEFORE INSERT ON flight_log_comments FOR EACH ROW
+CREATE TRIGGER bi_permissions BEFORE INSERT ON permissions FOR EACH ROW
 BEGIN
     IF (NEW.id IS NULL) THEN
         SET NEW.id = UUID_TO_BIN(UUID());

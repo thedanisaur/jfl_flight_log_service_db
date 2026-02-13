@@ -1,5 +1,6 @@
-CREATE TABLE flight_logs (
+CREATE TABLE template_flight_logs (
       id BINARY(16) PRIMARY KEY
+    , name VARCHAR(255) NOT NULL
     , user_id BINARY(16) NOT NULL
     , mds VARCHAR(255) NOT NULL
     , flight_log_date DATETIME NOT NULL
@@ -21,11 +22,13 @@ CREATE TABLE flight_logs (
     , remarks TEXT NULL
     , created_on DATETIME NOT NULL
     , updated_on DATETIME NOT NULL
+
+    , UNIQUE (name, user_id)
 );
 
-DROP TRIGGER IF EXISTS bi_flight_logs;
+DROP TRIGGER IF EXISTS bi_template_flight_logs;
 DELIMITER $$
-CREATE TRIGGER bi_flight_logs BEFORE INSERT ON flight_logs FOR EACH ROW
+CREATE TRIGGER bi_template_flight_logs BEFORE INSERT ON template_flight_logs FOR EACH ROW
 BEGIN
     IF (NEW.id IS NULL) THEN
         SET NEW.id = UUID_TO_BIN(UUID());
